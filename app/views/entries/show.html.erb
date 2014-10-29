@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="blog-post">
+            <h2 class="blog-post-title">  <%= @entry.title %></h2>
+            <h4><%= @entry.tag %></h4>
+            <h3><%= @entry.content %></h3>
+        <% if user_signed_in? %>
+      <% if current_user == @entry.user %>
+            <%= link_to 'Edit', edit_entry_path(@entry) %>
+            |
+            <%= link_to 'Destroy', @entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%end%>
+    <%end%>
+ </div>
+

@@ -1,0 +1,27 @@
+<h1>Category Entries</h1>
+<br />
+
+<table>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+
+<div class="blog-post">
+            <h2 class="blog-post-title"><%= link_to entry.title, entry %></h2>
+            <p><%= entry.content[0...30] %></p>
+        <% if user_signed_in? %>
+			<% if current_user == entry.user %>
+            <%= link_to 'Edit', edit_entry_path(entry) %>
+            |
+            <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%end%>
+		<%end%>
+ </div>
+
+
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
