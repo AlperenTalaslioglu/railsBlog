@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :required => true %>
   </div>
   <div class="field">
     <%= f.label :tag %><br>
-    <%= f.text_field :tag %>
+    <%= f.text_field :tag, :required => true %>
   </div>
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :required => true %>
   </div>
   <div class="field">
   <%= select_tag(:category_id, options_for_select( @categories.map{ |c| [c.name, c.id] })) %>

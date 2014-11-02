@@ -16,12 +16,15 @@ class EntriesController < ApplicationController
   def edit
   end
 
+  def feed
+    @entries = Entry.all
+    render :template => 'entries/feed.rss.builder', :layout => false
+  end
+
   def create
     @entry = Entry.new(entry_params)
     @entry.user = current_user
-    @entry.category = Category.find(params[:category_id])
-
-        
+    @entry.category = Category.find(params[:category_id])        
 
     respond_to do |format|
       if @entry.save
@@ -36,6 +39,7 @@ class EntriesController < ApplicationController
 
   def update
     @entry.user = current_user
+    @entry.category = Category.find(params[:category_id])        
      respond_to do |format|
       if @entry.update(entry_params)
         format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
@@ -52,7 +56,7 @@ class EntriesController < ApplicationController
   def destroy
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to entries, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to pages_index_path, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

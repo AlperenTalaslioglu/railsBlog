@@ -39,3 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+
+gem 'will_paginate'
+
+gem 'sitemap_generator', '~> 5.0.5'
